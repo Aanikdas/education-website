@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Donors</title>
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+
+<h2>Blood Donors</h2>
+
+<table id="donorsTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Blood Group</th>
+    </tr>
+  </thead>
+  <tbody id="donorsTableBody">
+  </tbody>
+</table>
+
+<script>
+  function generateRandomData() {
+    var names = ["John Doe", "Jane Smith", "Michael Johnson", "Emily Davis", "David Wilson"];
+    var emails = ["john@example.com", "jane@example.com", "michael@example.com", "emily@example.com", "david@example.com"];
+    var phoneNumbers = ["123-456-7890", "987-654-3210", "555-123-4567", "321-654-0987", "888-555-1234"];
+    var bloodGroups = ["A+", "B-", "AB+", "O+", "O-"];
+
+    var randomName = names[Math.floor(Math.random() * names.length)];
+    var randomEmail = emails[Math.floor(Math.random() * emails.length)];
+    var randomPhoneNumber = phoneNumbers[Math.floor(Math.random() * phoneNumbers.length)];
+    var randomBloodGroup = bloodGroups[Math.floor(Math.random() * bloodGroups.length)];
+
+    return [randomName, randomEmail, randomPhoneNumber, randomBloodGroup];
+  }
+
+  for (var i = 0; i < 100; i++) {
+    var rowData = generateRandomData();
+
+    var tableRow = document.createElement("tr");
+    for (var j = 0; j < rowData.length; j++) {
+      var tableData = document.createElement("td");
+      tableData.textContent = rowData[j];
+      tableRow.appendChild(tableData);
+    }
+
+    document.getElementById("donorsTableBody").appendChild(tableRow);
+  }
+</script>
+
+</body>
+</html>
